@@ -1,0 +1,26 @@
+{
+  "name": "amanode",
+  "version": "1.0.0",
+  "description": "Bamazon like Amazon, but not.",
+  "main": "amanode.js",
+  "scripts": {
+    "test": "None"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaswhitehead/Amanode.git"
+  },
+  "keywords": [
+    "Amanode"
+  ],
+  "author": "Jason Whitehead",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaswhitehead/Amanode/issues"
+  },
+  "homepage": "https://github.com/jaswhitehead/Amanode#readme",
+  "dependencies": {
+    "inquirer": "^7.2.0",
+    "mysql": "^2.18.1"
+  }
+}
