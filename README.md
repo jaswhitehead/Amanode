@@ -1,4 +1,4 @@
-# Amanode
+# Amanode - Where Amazon meets Node!
 This is an Amazon-like storefront using MySQL and node in a CLI application environment. The app will take 
 in orders from customers, show if there is not enough inventory to complete a purchase and deplete stock from the store's inventory after the purchase is made. 
 
