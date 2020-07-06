@@ -1,8 +1,8 @@
 var mysql = require("mysql");
 var inquirer = require("inquirer");
 
-// Import the `keys.js` file
-var keys = require("./keys.js");
+// Import the `keys.js` file to add DB password (Doesnt work right now)
+// var keys = require("./keys.js");
 
 // create the connection information for the sql database
 var connection = mysql.createConnection({
@@ -19,7 +19,7 @@ var connection = mysql.createConnection({
     database: "bamazon_DB"
   });
 
-  // connect to the mysql server and sql database
+// connect to the mysql server and sql database
 connection.connect(function(err) {
     if (err) throw err;
     manageProducts();
@@ -35,7 +35,7 @@ connection.connect(function(err) {
         choices: ["View Items", "View Low Inventory", "Add to Inventory", "Add New Products", "EXIT"]
       })
       .then(function(answer) {
-        // based on their answer, either call the bid or the post functions
+        // based on their answer, call the functions
         if (answer.manageInventory === "View Items") {
           viewItems();
         }
@@ -60,7 +60,9 @@ connection.connect(function(err) {
             productsArray.push(results[i].item_id + " | " + results[i].product_name + " | " + "$ " + results[i].price + " | " + results[i].department_name + " | " + results[i].stock_quantity);
         }
         console.log( " item_id" + " | " + "product_name" + " | " + "price" + " | " + "department_name" + " | " + "stock_quantity" );
+        console.log("===================================================================");
         console.log(productsArray);
+        console.log("===================================================================");
         manageProducts();
     });
   }
@@ -74,7 +76,9 @@ connection.connect(function(err) {
             }
         }
             console.log( "item_id" + " | " + "product_name" + " | " + "price" + " | " + "department_name" + " | " + "stock_quantity" );
+            console.log("===================================================================");
             console.log(productsArray);
+            console.log("===================================================================");
             manageProducts();
       });
     }
@@ -124,7 +128,9 @@ connection.connect(function(err) {
                     ],
                       function(error) {
                         if (error) throw err;
+                        console.log("===================================================================");
                         console.log("Your items stock was updated successfully!");
+                        console.log("===================================================================");
                         manageProducts();
                       }
               );
@@ -181,7 +187,9 @@ connection.connect(function(err) {
               },
               function(err) {
                 if (err) throw err;
+                console.log("===================================================================");
                 console.log("Your item was created successfully!");
+                console.log("===================================================================");
                 manageProducts();
               }
             );

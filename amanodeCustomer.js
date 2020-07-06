@@ -71,14 +71,18 @@ function buyProduct() {
                     function(error) {
                         if (error) throw err;
                         var total = chosenProduct.price * answer.numProducts;
+                        console.log("===================================================================");
                         console.log("Your order was placed!  " + "Your total is: " + total);
+                        console.log("===================================================================");
                         buyProduct();
                     }
                 );
                 } else {
-                    console.log(chosenProduct.stock_quantity);
-                    console.log(answer.numProducts);
+                    console.log("===================================================================");
+                    console.log("SORRY, we only have: " + chosenProduct.stock_quantity);
+                    console.log("You asked for: " + answer.numProducts);
                     console.log("There was not enough stock to place your order...");
+                    console.log("===================================================================");
                     buyProduct();
                 }
             });

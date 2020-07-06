@@ -1,3 +1,4 @@
+DROP DATABASE bamazon_DB;
 CREATE DATABASE bamazon_DB;
 
 USE bamazon_DB;
@@ -6,7 +7,7 @@ CREATE TABLE products(
   item_id INT NOT NULL AUTO_INCREMENT,
   product_name VARCHAR(200) NOT NULL,
   department_name VARCHAR(100) NOT NULL,
-  price INT default 0,
+  price DECIMAL(10,2) NULL,
   stock_quantity INT default 0,
   PRIMARY KEY (item_id)
 );
@@ -22,6 +23,6 @@ VALUES ("Red Swingline Stapler","Art & Crafts", "10.99", "8"),
     ("Natures Own Puppy Food 15lb bag", "Pet Supplies", "24.99", "45"),
     ("Brown Mulch (3yds)", "Garden", "4.99", "17"),
     ("Mrs. Pac Man", "PC & Video Games", "29.83", "1"),
-    ("Mandolin", "Musical Instruments", "75.49", "7"),
+    ("Rogue RM-100A Mandolin", "Musical Instruments", "75.49", "7"),
     ("Reciprocating Saw", "Power & Hand Tools", "39.49", "12");    
 SELECT * FROM products;
