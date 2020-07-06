@@ -1,7 +1,7 @@
 var mysql = require("mysql");
 var inquirer = require("inquirer");
 
-// Import the `keys.js` file to add DB password (Doesnt work right now)
+// Import the `keys.js` file to add DB password from .env file (Doesnt work right now)
 // var keys = require("./keys.js");
 
 // create the connection information for the sql database
@@ -14,7 +14,7 @@ var connection = mysql.createConnection({
     // Your username
     user: "root",
 
-    // Your password which is now pulling from .env
+    // Your password and database name
     password: "Gamecock@33",
     database: "bamazon_DB"
   });
@@ -59,6 +59,7 @@ function buyProduct() {
                 //determine if there is enough stock
                 if (chosenProduct.stock_quantity > parseInt(answer.numProducts)) {
                     connection.query(
+                        //Upadtes data set in mysql
                         "UPDATE products SET ? WHERE ?",
                         [
                             {
@@ -83,7 +84,7 @@ function buyProduct() {
                     console.log("You asked for: " + answer.numProducts);
                     console.log("There was not enough stock to place your order...");
                     console.log("===================================================================");
-                    buyProduct();
+                    orderMore();
                 }
             });
     });
@@ -99,7 +100,7 @@ function orderMore() {
         choices: ["Order More Products", "No Thank You, I'm Finished"]
       })
       .then(function(answer) {
-        // based on their answer, call the functions
+        // based on their answer, call the buying function or exit application
         if (answer.orderMoreProducts === "Order More Products") {
           buyProduct();
         }
