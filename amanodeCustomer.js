@@ -1,8 +1,8 @@
 var mysql = require("mysql");
 var inquirer = require("inquirer");
 
-// Import the `keys.js` file
-var keys = require("./keys.js");
+// Import the `keys.js` file to add DB password (Doesnt work right now)
+// var keys = require("./keys.js");
 
 // create the connection information for the sql database
 var connection = mysql.createConnection({
@@ -74,7 +74,7 @@ function buyProduct() {
                         console.log("===================================================================");
                         console.log("Your order was placed!  " + "Your total is: " + total);
                         console.log("===================================================================");
-                        buyProduct();
+                        orderMore();
                     }
                 );
                 } else {
@@ -87,4 +87,24 @@ function buyProduct() {
                 }
             });
     });
+}
+
+// Added an additional function to decide whether to order more or not instead of goin straight back to buying prompt
+function orderMore() {
+    inquirer
+      .prompt({
+        name: "orderMoreProducts",
+        type: "list",
+        message: "Would you like to order more products?",
+        choices: ["Order More Products", "No Thank You, I'm Finished"]
+      })
+      .then(function(answer) {
+        // based on their answer, call the functions
+        if (answer.orderMoreProducts === "Order More Products") {
+          buyProduct();
+        }
+        else if(answer.orderMoreProducts === "No Thank You, I'm Finished") {
+            connection.end();
+        }
+      });
 }
