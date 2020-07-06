@@ -1,6 +1,9 @@
 var mysql = require("mysql");
 var inquirer = require("inquirer");
 
+// Import the `keys.js` file
+var keys = require("./keys.js");
+
 // create the connection information for the sql database
 var connection = mysql.createConnection({
     host: "localhost",
@@ -10,8 +13,8 @@ var connection = mysql.createConnection({
   
     // Your username
     user: "root",
-  
-    // Your password
+
+    // Your password which is now pulling from .env
     password: "Gamecock@33",
     database: "bamazon_DB"
   });
